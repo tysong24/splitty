@@ -2,56 +2,97 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
-        position: 'absolute',
         flex: 1,
+        position: 'absolute',
         flexDirection: 'column',
-        color: 'white',
-        height: '90%',
-        width: '90%'
+        height: '100%',
+        width: '100%',
     },
+
     image: {
         flex: 1,
         resizeMode: 'cover',
         justifyContent: 'center',
     },
+
+    titleCard: {
+        flex: 9,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+
+    pageCard: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+    },
+
+    peopleCard: {
+        flex: 3,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+    },
+
+    personIcon: {
+        height: 50,
+        width: 50,
+    },
+
+    people: {
+        flexDirection: 'column'
+    },
+
+    inputCard: {
+        flex: 1,
+        backgroundColor: 'paleblue'
+    },
+
     title: {
         position: 'absolute',
-        right: '20%',
-        bottom: '70%',
-        flexDirection: 'column',
-        opacity: .9,
-        color: 'white',
+        color: 'black',
         fontWeight: '800',
         fontSize: 25,
-        borderColor: 'black',
     },
+
     input: {
         height: 40,
         margin: 12,
         borderWidth: 0,
         textAlignVertical: 'center',
     },
+
     item: {
         flex: 1,
         alignItems: 'center'
     },
+
     buttonView: {
-        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        marginBottom: 36
+        justifyContent: 'center',
+        justifyContent: 'space-between'
     },
+
+    add: {
+        flex: 1,
+        zIndex: 900,
+    },
+
     homeButton: {
+        flex: 1,
         zIndex: 900,
-        bottom: 10,
     },
+
     next: {
+        flex: 1,
         zIndex: 900,
-        bottom: 10,
     },
+
     back: {
         zIndex: 900,
-        bottom: 10,
     },
 });
 

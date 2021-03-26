@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import Styles from '../assets/styles'
-import { Text, View, TextInput, Button } from 'react-native'
+import { Text, View, TextInput, Button, Image } from 'react-native'
 
 const People = ({ navigation }) => {
     const [name, setName] = useState('')
     const [people, setPeople] = useState([]);
 
     const renderPeople = () => {
-        const renderObject = people.map((el, idx) => (<View key={idx}><Text>{el}</Text></View>))
+        const renderObject = people.map((el, idx) => (<View key={idx} style={Styles.people}><Image style={Styles.personIcon} source={require('../../assets/person-icon.png')} /><Text>{el}</Text></View>))
         return renderObject;
     }
 
     return (
         <View style={Styles.container}>
-            <View>
-                <View>{renderPeople()}</View>
-                <Text>Who is eating with you?</Text>
+            <View style={Styles.pageCard}>
+                <Text style={Styles.title}>People</Text>
+            </View>
+            <View style={Styles.peopleCard}>{renderPeople()}</View>
+            <View style={Styles.inputCard}>
                 <TextInput
                     onChangeText={(text) => {
                         setName(text)
@@ -23,17 +25,17 @@ const People = ({ navigation }) => {
                     value={name}
                     style={Styles.input}
                 />
-                <Button title='More People?' onPress={() => {
+                <Button style={Styles.add} title='Add People' onPress={() => {
                     setPeople((prevState) => ([...prevState, name]));
                     setName('');
                 }} />
             </View>
-            <Button title='To Items!' onPress={() => {
-                navigation.navigate('Items', { people })
-            }} />
-            <View style={Styles.homeButton}>
-                <Button title='Back to top' onPress={() => {
+            <View style={Styles.buttonView} >
+                <Button style={Styles.homeButton} title='Home' onPress={() => {
                     navigation.popToTop();
+                }} />
+                <Button style={Styles.next} title='Next!' onPress={() => {
+                    navigation.navigate('Items', { people })
                 }} />
             </View>
         </View>
