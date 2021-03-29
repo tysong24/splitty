@@ -10,6 +10,7 @@ const Items = ({ navigation, route }) => {
     const [item, setItem] = useState([]);
 
     const renderItems = () => {
+        console.log(item)
         const renderObject = item.map((el, idx) => (<View key={idx}><Text>{el.item}</Text><Text>{el.cost}</Text></View>))
         return renderObject;
     }
@@ -31,24 +32,10 @@ const Items = ({ navigation, route }) => {
 
     return (
         <View style={Styles.container}>
-            <View>
-                <View>{renderItems()}</View>
-                <Text>Number of Items</Text>
-                <Text>{item.length}</Text>
+            <View style={Styles.pageCard}>
+                <Text style={Styles.title}>Items</Text>
             </View>
-
-            <View style={Styles.itemView}>
-                <Text style={Styles.title}>Add Items</Text>
-                <Button title='Store Item' onPress={() => {
-                    let hold = {
-                        item: name,
-                        cost: cost,
-                        sharing: sharing,
-                    }
-                    setItem((prevState) => [...prevState, hold]);
-                    setName('');
-                    setCost(0);
-                }} />
+            <View style={Styles.inputCard}>
                 <Text>Name of Item: </Text>
                 <TextInput
                     onChangeText={(text) => {
@@ -82,8 +69,19 @@ const Items = ({ navigation, route }) => {
                         setSharing((prevState) => ([...prevState, item]))
                     }}
                 />
-
+                <Button title='Store Item' onPress={() => {
+                    let hold = {
+                        item: name,
+                        cost: cost,
+                        sharing: sharing,
+                    }
+                    setItem((prevState) => [...prevState, hold]);
+                    setName('');
+                    setCost(0);
+                }} />
             </View>
+            <View style={Styles.pageDisplay}>{renderItems()}</View>
+
             <View style={Styles.buttonView}>
                 <Button style={Styles.next} title='Next' onPress={() => {
                     navigation.navigate('List', { item });

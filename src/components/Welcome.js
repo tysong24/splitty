@@ -10,7 +10,7 @@ const Welcome = ({ navigation }) => {
                 <Text style={Styles.title}>Welcome to Splitty!</Text>
             </View>
             <View>
-                <Button style={Styles.homeButton} title='Start Splitting!' onPress={() => {
+                <Button style={Styles.next} title='Start Splitting!' onPress={() => {
                     navigation.navigate('People')
                 }} />
             </View>

@@ -7,7 +7,7 @@ const People = ({ navigation }) => {
     const [people, setPeople] = useState([]);
 
     const renderPeople = () => {
-        const renderObject = people.map((el, idx) => (<View key={idx} style={Styles.people}><Image style={Styles.personIcon} source={require('../../assets/person-icon.png')} /><Text>{el}</Text></View>))
+        const renderObject = people.map((el, idx) => (<View key={idx} style={Styles.people}><Image style={Styles.personIcon} source={require('../../assets/person-icon.png')} /><Text style={Styles.peopleText}>{el}</Text></View>))
         return renderObject;
     }
 
@@ -16,7 +16,6 @@ const People = ({ navigation }) => {
             <View style={Styles.pageCard}>
                 <Text style={Styles.title}>People</Text>
             </View>
-            <View style={Styles.peopleCard}>{renderPeople()}</View>
             <View style={Styles.inputCard}>
                 <TextInput
                     onChangeText={(text) => {
@@ -30,6 +29,7 @@ const People = ({ navigation }) => {
                     setName('');
                 }} />
             </View>
+            <View style={Styles.pageDisplay}>{renderPeople()}</View>
             <View style={Styles.buttonView} >
                 <Button style={Styles.homeButton} title='Home' onPress={() => {
                     navigation.popToTop();

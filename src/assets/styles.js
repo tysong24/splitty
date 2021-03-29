@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+    // containers
     container: {
         flex: 1,
         position: 'absolute',
@@ -9,14 +10,8 @@ const styles = StyleSheet.create({
         width: '100%',
     },
 
-    image: {
-        flex: 1,
-        resizeMode: 'cover',
-        justifyContent: 'center',
-    },
-
     titleCard: {
-        flex: 9,
+        flex: 5,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
@@ -29,27 +24,22 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
 
-    peopleCard: {
+    pageDisplay: {
         flex: 3,
         flexDirection: 'row',
         backgroundColor: 'white',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-    },
-
-    personIcon: {
-        height: 50,
-        width: 50,
-    },
-
-    people: {
-        flexDirection: 'column'
+        zIndex: 0,
     },
 
     inputCard: {
         flex: 1,
-        backgroundColor: 'paleblue'
+        backgroundColor: 'white',
+        zIndex: 1,
     },
+
+    // contents
 
     title: {
         position: 'absolute',
@@ -61,8 +51,10 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 0,
+        borderWidth: 1,
         textAlignVertical: 'center',
+        borderColor: 'grey',
+        borderRadius: 20,
     },
 
     item: {
@@ -70,10 +62,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    // buttons
+
     buttonView: {
         flexDirection: 'row',
         justifyContent: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        bottom: 25,
     },
 
     add: {
@@ -88,11 +83,35 @@ const styles = StyleSheet.create({
 
     next: {
         flex: 1,
-        zIndex: 900,
     },
 
     back: {
         zIndex: 900,
+    },
+
+    // assets and other
+
+    image: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
+
+    personIcon: {
+        height: 50,
+        width: 50,
+        alignSelf: 'center'
+    },
+
+    people: {
+        flexDirection: 'column'
+    },
+
+    peopleText: {
+        position: 'relative',
+        justifyContent: 'flex-end',
+        alignSelf: 'center',
+        fontWeight: "bold"
     },
 });
 
