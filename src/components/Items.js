@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styles from '../assets/styles'
 import { Text, View, TextInput, Button } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -10,10 +10,22 @@ const Items = ({ navigation, route }) => {
     const [item, setItem] = useState([]);
 
     const renderItems = () => {
-        console.log(item)
-        const renderObject = item.map((el, idx) => (<View key={idx}><Text>{el.item}</Text><Text>{el.cost}</Text></View>))
+        let renderObject = []
+        let idx = 1;
+        item.forEach(el => {
+            let names = []
+            for (let i = 0; i < el.sharing.length; i++) {
+                names.push(<Text key={i}>{el.sharing[i]}</Text>)
+            }
+            renderObject.push(<View key={idx}><Text>{el.item}</Text><Text>{el.cost}</Text><View>{names}</View></View>)
+            idx++;
+        })
         return renderObject;
     }
+
+    useEffect(() => {
+        renderItems()
+    }, [setItem])
 
     const renderPeople = () => {
         const people = route.params.people;
@@ -29,6 +41,7 @@ const Items = ({ navigation, route }) => {
         console.log(renderList)
         return renderList;
     }
+
 
     return (
         <View style={Styles.container}>
@@ -66,7 +79,7 @@ const Items = ({ navigation, route }) => {
                         justifyContent: 'flex-start'
                     }}
                     onChangeItem={item => {
-                        setSharing((prevState) => ([...prevState, item]))
+                        setSharing(item)
                     }}
                 />
                 <Button title='Store Item' onPress={() => {
@@ -78,19 +91,20 @@ const Items = ({ navigation, route }) => {
                     setItem((prevState) => [...prevState, hold]);
                     setName('');
                     setCost(0);
+                    setSharing([])
                 }} />
             </View>
-            <View style={Styles.pageDisplay}>{renderItems()}</View>
+            <View style={Styles.pageDisplay}>{(item.length > 0) ? renderItems() : <Text>Please enter items</Text>}</View>
 
             <View style={Styles.buttonView}>
-                <Button style={Styles.next} title='Next' onPress={() => {
-                    navigation.navigate('List', { item });
+                <Button style={Styles.back} title='Back' onPress={() => {
+                    navigation.goBack();
                 }} />
                 <Button style={Styles.homeButton} title='Home' onPress={() => {
                     navigation.popToTop();
                 }} />
-                <Button style={Styles.back} title='Back' onPress={() => {
-                    navigation.goBack();
+                <Button style={Styles.next} title='Next' onPress={() => {
+                    navigation.navigate('List', { item });
                 }} />
             </View>
         </View>
