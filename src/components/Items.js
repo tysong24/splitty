@@ -91,7 +91,6 @@ const Items = ({ navigation, route }) => {
                     setItem((prevState) => [...prevState, hold]);
                     setName('');
                     setCost(0);
-                    setSharing([])
                 }} />
             </View>
             <View style={Styles.pageDisplay}>{(item.length > 0) ? renderItems() : <Text>Please enter items</Text>}</View>
